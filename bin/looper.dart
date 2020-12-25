@@ -44,8 +44,7 @@ class Looper {
       _process = await Process.start(exec.path, args);
 
       await _process.exitCode;
-      var durationSeconds = stopwatch.elapsed.inMilliseconds/1e3;
-      print('Process closed after ${durationSeconds.toStringAsFixed(2)}');
+      print('Process closed after ${stopwatch.elapsed}');
     }
 
     _process = null;
