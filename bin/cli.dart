@@ -6,7 +6,9 @@ import 'finder.dart';
 
 void main(List<String> args) async {
 
-  print('You can close this program by alt-tabbing.\nRemember to close the started program afterwards.\n');
+  print('You can close this program by alt-tabbing.');
+  print('Remember to close the started program afterwards.');
+  print('\nTip: you can drag the file in this window and then press enter to enter the location.');
 
   // Find executable using user input. Only works on windows.
   var mrKrabsExec = await findFile();

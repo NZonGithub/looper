@@ -11,6 +11,7 @@ Future<File> findFile() async {
 
     // Try again if user didn't input anything
     if (input == null || input.isEmpty) continue;
+    input = input.replaceAll(RegExp('["\']'), '');
 
     file = File(input);
 
