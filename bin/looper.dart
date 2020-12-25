@@ -32,16 +32,22 @@ class Looper {
 
   void _loop() async {
 
+    if (_process != null) return;
+
+    var stopwatch = Stopwatch()..start();
+
     // Run while looper is enabled and process isn't already running.
-    while (_run && _process == null) {
+    while (_run) {
+      stopwatch.reset();
 
       print('\nStarting ${exec.path}');
       _process = await Process.start(exec.path, args);
 
       await _process.exitCode;
-      print('Process closed');
-
-      _process = null;
+      var durationSeconds = stopwatch.elapsed.inMilliseconds/1e3;
+      print('Process closed after ${durationSeconds.toStringAsFixed(2)}');
     }
+
+    _process = null;
   }
 }
